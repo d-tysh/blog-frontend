@@ -1,0 +1,144 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  /* color: #646cff; */
+  text-decoration: inherit;
+  transition: color 0.25s;
+}
+a:hover {
+  color: #191e80;
+}
+
+body {
+  min-width: 1140px;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  /* place-items: center; */
+  /* min-width: 320px; */
+  /* min-height: 100vh; */
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+h2 {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+h3 {
+  font-size: 24px;
+  line-height: 1.1;
+  font-weight: bold;
+  margin: 12px 0 4px;
+}
+
+h4 {
+  font-size: 18px;
+  line-height: 1.1;
+  font-weight: bold;
+  margin: 8px 0 4px;
+}
+
+input, textarea {
+  transition: all 0.25s;
+  outline: none;
+}
+
+input:hover, textarea:hover,
+input:focus, textarea:focus {
+  border-color: #646cff;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: rgb(203 213 225);
+  border-color: #aab3c0;
+  cursor: pointer;
+  transition: all 0.25s;
+  --tw-bg-opacity: 1;
+}
+button:hover {
+  border-color: #646cff;
+  color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+table, thead, tbody, tr, td, th {
+  border: 1px solid;
+}
+td, th {
+  padding: 8px 16px;
+}
+thead {
+  background-color: rgb(224, 224, 224);
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  @apply text-black p-3 rounded-full;
+}
+
+.swiper-button-prev {
+  @apply left-0 ml-2;
+}
+
+.swiper-button-next {
+  @apply right-0 mr-2;
+}
+
+.swiper-pagination-bullet {
+  @apply bg-gray-400 w-3 h-3 rounded-full opacity-50 mx-1;
+}
+
+.swiper-pagination-bullet-active {
+  @apply bg-blue-500 opacity-100;
+}
