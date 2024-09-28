@@ -15,10 +15,7 @@ export const NewsListItem = ({ item }: { item: INews }) => {
                     <h3 className="text-base font-bold">{item.title}</h3>
                 </NavLink>
             }
-            <div className="flex items-center gap-4">
-                <i className="bg-slate-300 rounded-lg px-2 py-1">🕒 {item.date && getDate(item.date)}</i>
-                <i className="">✒️ Author: {item.author?.name}</i>
-            </div>
+            <i className="bg-slate-300 rounded-lg px-2 py-1">🕒 {item.date && getDate(item.date)}</i>
             { isLoggedIn && <i>✒️ {item.author?.name}</i> }
             <p dangerouslySetInnerHTML={{
                 __html:
