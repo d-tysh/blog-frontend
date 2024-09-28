@@ -37,8 +37,8 @@ export const OneNewsInfo = ({ newsItem }: { newsItem: INews }) => {
             {
                 isLoggedIn &&
                 <div className="flex justify-end gap-2 mb-4">
-                    <Button text="✏️ Edit" onClick={onUpdate} disabled={btnDisabled} width={150} />
-                    <Button text="❌ Delete" onClick={onDelete} disabled={btnDisabled} width={150} />
+                    <Button text="✏️ Edit" onClick={onUpdate} disabled={btnDisabled} width={120} />
+                    <Button text="❌ Delete" onClick={onDelete} disabled={btnDisabled} width={120} />
                 </div>
             }
             <i>✒️ Author: {newsItem.author?.name}</i>
