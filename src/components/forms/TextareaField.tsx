@@ -9,7 +9,7 @@ export const TextareaField = <TFormValues extends Record<string, unknown>>(props
             <textarea 
                 {...register(name)}
                 required={required} 
-                className="px-4 py-2 rounded-lg sm:w-4/5 border min-h-[300px]" 
+                className="px-4 py-2 bg-white rounded-lg sm:w-4/5 border min-h-[300px]" 
             />
         </label>
     )

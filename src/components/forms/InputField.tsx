@@ -21,7 +21,7 @@ export const InputField = <TFormValues extends Record<string, unknown>>(props: I
                         })
                     })}
                     className={classNames(
-                        `px-4 py-2 rounded-lg border sm:w-4/5 h-[${height}px]`,
+                        `px-4 py-2 rounded-lg bg-white border sm:w-4/5 h-[${height}px]`,
                     )}
                     readOnly={readonly}
                 />
