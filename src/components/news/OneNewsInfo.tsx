@@ -41,9 +41,8 @@ export const OneNewsInfo = ({ newsItem }: { newsItem: INews }) => {
                     <Button text="❌ Delete" onClick={onDelete} disabled={btnDisabled} width={120} />
                 </div>
             }
-            <i>✒️ Author: {newsItem.author?.name}</i>
-            <br />
-            <i>🕒 Date: {newsItem.date && getDate(newsItem.date)}</i>
+            <p className="mb-2">✒️ Author: {newsItem.author?.name}</p>
+            <p className="mb-2">🕒 Date: {newsItem.date && getDate(newsItem.date)}</p>
             <p dangerouslySetInnerHTML={{ __html: newsItem.content as string }} className="border min-h-80 p-2"></p>
         </>
     )

@@ -4,7 +4,7 @@ export const TextareaField = <TFormValues extends Record<string, unknown>>(props
     const { label, name, required = false, register } = props;
     
     return (
-        <label className="flex items-center justify-between">
+        <label className="flex items-center justify-between mb-5">
             <span className="font-bold w-1/5">{label}</span>
             <textarea 
                 {...register(name)}

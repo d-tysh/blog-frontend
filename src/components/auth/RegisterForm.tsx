@@ -7,6 +7,7 @@ import { IRegisterForm } from "../../interfaces/interfaces";
 import { InputField } from "../forms/InputField";
 import { getAllUsers } from "../../redux/users/actions";
 import { Button } from "../Button";
+import { emailPattern } from "../../constants";
 
 export const RegisterForm = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm<IRegisterForm>();
@@ -20,12 +21,12 @@ export const RegisterForm = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col w-[400px] mx-auto gap-4">
+        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col w-[400px] mx-auto gap-2">
             <InputField label='Name' name='name' required 
                 register={register} errors={errors} 
             />
             <InputField label='Email' name='email' required 
-                register={register} errors={errors} 
+                register={register} errors={errors} pattern={emailPattern}
             />
             <InputField label='Password' type='password' name='password' required 
                 register={register} errors={errors} 

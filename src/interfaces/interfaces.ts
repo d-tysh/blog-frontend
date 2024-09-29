@@ -99,7 +99,8 @@ export interface IFormField<TFormValues extends FieldValues> {
   errors?: FieldErrors<TFormValues>,
   value?: string,
   readonly?: boolean,
-  options?: string[]
+  options?: string[],
+  pattern?: RegExp
 }
 
 export interface IButtonProps {

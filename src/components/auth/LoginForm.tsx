@@ -6,6 +6,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { ILoginForm } from "../../interfaces/interfaces";
 import { InputField } from "../forms/InputField";
 import { Button } from "../Button";
+import { emailPattern } from "../../constants";
 
 export const LoginForm = () => {
     const { register, handleSubmit, formState: { errors } } = useForm<ILoginForm>();
@@ -17,9 +18,9 @@ export const LoginForm = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col mx-auto w-[400px] gap-4">
+        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col mx-auto w-[400px] gap-2">
             <InputField label='Email' name='email' required 
-                register={register} errors={errors} 
+                register={register} errors={errors} pattern={emailPattern}
             />
             <InputField label='Password' type='password' name='password' required 
                 register={register} errors={errors} 

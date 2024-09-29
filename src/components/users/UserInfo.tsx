@@ -11,6 +11,7 @@ import { Button } from "../Button";
 import { SelectField } from "../forms/SelectField";
 import { useUpdateUser } from "../hooks/useUpdateUser";
 import useGetUserInfo from "../hooks/useGetUserInfo";
+import { emailPattern } from "../../constants";
 
 export const UserInfo = () => {
     const currentUser = useSelector(selectUser);
@@ -31,10 +32,12 @@ export const UserInfo = () => {
                 !isLoading && !error && userInfo &&
                 <form className="flex flex-col mx-auto w-[400px] gap-2">
                     <InputField label='Name:' name='name' required register={register} errors={errors} />
-                    <InputField label='Email:' name='email' required register={register} errors={errors} />
+                    <InputField label='Email:' name='email' required register={register} errors={errors} 
+                        pattern={emailPattern}
+                    />
                     {
                         currentUser?.role === 'admin' ?
-                            <SelectField label="Role" name="role" register={register} options={['admin', 'user']} />
+                            <SelectField label="Role:" name="role" register={register} options={['admin', 'user']} />
                             :
                             <InputField label='Role:' name='role' required readonly register={register} errors={errors} />
                     }

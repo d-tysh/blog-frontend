@@ -19,7 +19,6 @@
 
 a {
   font-weight: 500;
-  /* color: #646cff; */
   text-decoration: inherit;
   transition: color 0.25s;
 }
@@ -32,9 +31,7 @@ body {
   margin: 0;
   display: flex;
   justify-content: center;
-  /* place-items: center; */
-  /* min-width: 320px; */
-  /* min-height: 100vh; */
+  color: #343434;
 }
 
 h1 {
