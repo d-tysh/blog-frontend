@@ -27,7 +27,7 @@ export const HeaderAuth = () => {
                 isLoggedIn && user && !isFetchingCurrUser &&
                 <div className="flex items-center gap-3">
                     <NavLink to={`/users/${user.id}`}>👋 Hello, {user.name}!</NavLink>
-                    <Button text="🏁 Logout" width={120} isLoading={!isLoading} onClick={handleLogout} />
+                    <Button text="🏁 Logout" width={120} isLoading={isLoading} onClick={handleLogout} />
                 </div>
             }
             {
