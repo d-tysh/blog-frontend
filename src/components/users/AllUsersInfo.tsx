@@ -22,9 +22,12 @@ export const AllUsersInfo = () => {
         <>
             {isLoading && <Loader />}
             {
-                !isLoading && users && <UsersTable users={users} />
+                !isLoading && users &&
+                <div className="overflow-x-auto">
+                    <UsersTable users={users} />
+                </div>
             }
-            <div className="flex justify-end mb-2">
+            <div className="flex justify-center sm:justify-end mb-2">
                 <Button text="➕ Add new user" onClick={() => navigate('/users/add')} />
             </div>
         </>

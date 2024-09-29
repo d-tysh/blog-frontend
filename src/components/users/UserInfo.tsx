@@ -30,7 +30,7 @@ export const UserInfo = () => {
             { isLoading && !error && <Loader /> }
             {
                 !isLoading && !error && userInfo &&
-                <form className="flex flex-col mx-auto w-[400px] gap-2">
+                <form className="flex flex-col mx-auto md:w-[400px] gap-2">
                     <InputField label='Name:' name='name' required register={register} errors={errors} />
                     <InputField label='Email:' name='email' required register={register} errors={errors} 
                         pattern={emailPattern}

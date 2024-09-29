@@ -18,7 +18,7 @@ export const LoginForm = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col mx-auto w-[400px] gap-2">
+        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col mx-auto sm:w-[400px] gap-2">
             <InputField label='Email' name='email' required 
                 register={register} errors={errors} pattern={emailPattern}
             />

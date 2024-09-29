@@ -9,9 +9,9 @@ const UpdateNewsPage = () => {
     const navigate = useNavigate();
 
     return (
-        <div className='w-[800px] mx-auto'>
-            <h2>Update news: <i>{currentNews?.title}</i></h2>
-            <div className="flex justify-end mb-4">
+        <div className='mx-auto lg:w-[800px]'>
+            <h2 className="text-center">Update news: <i>{currentNews?.title}</i></h2>
+            <div className="flex justify-center sm:justify-end mb-4">
                 <Button text="✖️ Close editor" type='button' onClick={() => navigate(`/news/${currentNews?._id}`)} />
             </div>
             <UpdateNewsForm />

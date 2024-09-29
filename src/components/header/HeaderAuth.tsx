@@ -25,14 +25,14 @@ export const HeaderAuth = () => {
             { isFetchingCurrUser && <Loader size={30} /> }
             {
                 isLoggedIn && user && !isFetchingCurrUser &&
-                <div className="flex items-center gap-3">
+                <div className="hidden lg:flex items-center gap-3">
                     <NavLink to={`/users/${user.id}`}>👋 Hello, {user.name}!</NavLink>
                     <Button text="🏁 Logout" width={120} isLoading={isLoading} onClick={handleLogout} />
                 </div>
             }
             {
                 !isLoggedIn && !user && !isFetchingCurrUser &&
-                <div className="flex gap-4 text-xl">
+                <div className="hidden lg:flex gap-4 text-xl">
                     <NavLink to='/login'>🔑 Login</NavLink>
                     <NavLink to='/register'>📲 Register</NavLink>
                 </div>

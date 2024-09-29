@@ -27,8 +27,8 @@ a:hover {
 }
 
 body {
-  min-width: 1140px;
-  margin: 0;
+  /* min-width: 1140px; */
+  margin: 0 auto;
   display: flex;
   justify-content: center;
   color: #343434;
@@ -60,14 +60,19 @@ h4 {
   margin: 8px 0 4px;
 }
 
-input, textarea {
+input, textarea, select {
   transition: all 0.25s;
   outline: none;
 }
 
-input:hover, textarea:hover,
-input:focus, textarea:focus {
+input:hover, input:focus, 
+textarea:hover, textarea:focus {
   border-color: #646cff;
+}
+
+select:hover, select:focus {
+  border-color: #646cff;
+  cursor: pointer;
 }
 
 button {
@@ -138,4 +143,11 @@ thead {
 
 .swiper-pagination-bullet-active {
   @apply bg-blue-500 opacity-100;
+}
+
+@media (max-width: 639px) {
+  .swiper-button-prev::after,
+  .swiper-button-next::after {
+    display: none;
+  }
 }

@@ -8,7 +8,7 @@ export const NewsListItem = ({ item }: { item: INews }) => {
     const isLoggedIn = useSelector(selectIsLoggedIn);
 
     return (
-        <li key={item._id} className="flex flex-col gap-3 p-4 bg-slate-200 w-[calc((100%-16px)/2)]">
+        <li key={item._id} className="flex flex-col gap-3 p-4 bg-slate-200 w-full lg:w-[calc((100%-16px)/2)]">
             {
                 item._id && 
                 <NavLink to={item._id}>

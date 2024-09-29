@@ -7,7 +7,7 @@ export const AdminMenu = () => {
 
     return (
         currUser?.role === 'admin' &&
-        <div className="border border-slate-300 px-4 py-2 mb-4">
+        <div className="border border-slate-300 px-4 py-2">
             <h4>Admin Menu ⚙️</h4>
             <ul className="list-disc ml-4">
                 <li key='users'><NavLink to='/users'>Users</NavLink></li>

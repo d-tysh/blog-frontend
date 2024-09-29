@@ -21,7 +21,7 @@ export const RegisterForm = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col w-[400px] mx-auto gap-2">
+        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col sm:w-[400px] mx-auto gap-2">
             <InputField label='Name' name='name' required 
                 register={register} errors={errors} 
             />

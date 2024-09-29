@@ -38,7 +38,7 @@ export const Pagination = ({ clickHandler, limit }: IPagination) => {
     const pageNumbers = generatePageNumbers(pages, activePage, visiblePagesLimit);
 
     return (
-        <ul className="flex justify-center my-4 gap-1">
+        <ul className="flex flex-wrap justify-center my-4 gap-1">
             <li>
                 <button onClick={handlePrev} disabled={activePage === 1}>⬅ Prev</button>
             </li>

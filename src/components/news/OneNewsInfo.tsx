@@ -33,10 +33,10 @@ export const OneNewsInfo = ({ newsItem }: { newsItem: INews }) => {
 
     return (
         <>
-            <h2>{newsItem.title}</h2>
+            <h2 className="text-center sm:text-left">{newsItem.title}</h2>
             {
                 isLoggedIn &&
-                <div className="flex justify-end gap-2 mb-4">
+                <div className="flex justify-center sm:justify-end gap-2 mb-4">
                     <Button text="✏️ Edit" onClick={onUpdate} disabled={btnDisabled} width={120} />
                     <Button text="❌ Delete" onClick={onDelete} disabled={btnDisabled} width={120} />
                 </div>
