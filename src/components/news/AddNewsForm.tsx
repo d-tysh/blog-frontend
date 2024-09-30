@@ -28,7 +28,7 @@ export const AddNewsForm = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col lg:w-[800px] mx-auto gap-2">
+        <form onSubmit={handleSubmit(onSubmit)} className="form w-full xl:w-[800px]">
             <InputField label="Title" type="text" name="title" required
                 register={register} errors={errors}
             />

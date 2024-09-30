@@ -30,11 +30,9 @@ export const UserInfo = () => {
             { isLoading && !error && <Loader /> }
             {
                 !isLoading && !error && userInfo &&
-                <form className="flex flex-col mx-auto md:w-[400px] gap-2">
+                <form className="form w-full md:w-[400px]">
                     <InputField label='Name:' name='name' required register={register} errors={errors} />
-                    <InputField label='Email:' name='email' required register={register} errors={errors} 
-                        pattern={emailPattern}
-                    />
+                    <InputField label='Email:' name='email' required register={register} errors={errors} pattern={emailPattern}/>
                     {
                         currentUser?.role === 'admin' ?
                             <SelectField label="Role:" name="role" register={register} options={['admin', 'user']} />

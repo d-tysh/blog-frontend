@@ -17,7 +17,7 @@ export const NewsAside = () => {
     }, [dispatch])
 
     return (
-        <div className="border border-slate-300 px-4 py-2">
+        <div className="aside-item">
             <h4>Last News:</h4>
             <ul className="list-disc ml-4">
                 { isLoading && !lastNews.length && <Loader /> }

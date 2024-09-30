@@ -8,14 +8,14 @@ export const NewsListItem = ({ item }: { item: INews }) => {
     const isLoggedIn = useSelector(selectIsLoggedIn);
 
     return (
-        <li key={item._id} className="flex flex-col gap-3 p-4 bg-slate-200 w-full lg:w-[calc((100%-16px)/2)]">
+        <li key={item._id} className="news-list-item">
             {
                 item._id && 
                 <NavLink to={item._id}>
                     <h3 className="text-base font-bold">{item.title}</h3>
                 </NavLink>
             }
-            <i className="bg-slate-300 rounded-lg px-2 py-1 mr-auto">🕒 {item.date && getDate(item.date)}</i>
+            <p className="bg-slate-300 rounded-lg px-2 py-1 mr-auto">🕒 {item.date && getDate(item.date)}</p>
             { isLoggedIn && <i>✒️ {item.author?.name}</i> }
             <p dangerouslySetInnerHTML={{
                 __html:

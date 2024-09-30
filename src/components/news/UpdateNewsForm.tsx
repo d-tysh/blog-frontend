@@ -33,7 +33,7 @@ export const UpdateNewsForm = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col mx-auto gap-4">
+        <form onSubmit={handleSubmit(onSubmit)} className="form">
             <InputField label="Title" type="text" name="title" required
                 register={register} errors={errors}
             />

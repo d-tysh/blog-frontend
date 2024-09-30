@@ -1,4 +1,3 @@
-import classNames from "classnames"
 import { IFormField } from "../../interfaces/interfaces";
 
 export const InputField = <TFormValues extends Record<string, unknown>>(props: IFormField<TFormValues>) => {
@@ -6,7 +5,7 @@ export const InputField = <TFormValues extends Record<string, unknown>>(props: I
     
     return (
         <div className="relative">
-            <label className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-0 mb-5">
+            <label className="form-label">
                 <span className="font-bold sm:w-1/5">{label}</span>
                 <input
                     type={type} 
@@ -20,15 +19,14 @@ export const InputField = <TFormValues extends Record<string, unknown>>(props: I
                             }
                         })
                     })}
-                    className={classNames(
-                        `px-4 py-2 rounded-lg bg-white border sm:w-4/5 h-[${height}px]`,
-                    )}
+                    className="form-field"
+                    style={{ height }}
                     readOnly={readonly}
                 />
             </label>
             {
                 errors && errors[name] && 
-                <p className="text-sm text-red-400 text-center mt-1 absolute bottom-0 w-full">
+                <p className="form-field-error">
                     {String(errors[name].message)}
                 </p>
             }
