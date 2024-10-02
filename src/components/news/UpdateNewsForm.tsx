@@ -8,6 +8,7 @@ import { INews } from "../../interfaces/interfaces";
 import { InputField } from "../forms/InputField";
 import { TextareaField } from "../forms/TextareaField";
 import { Button } from "../Button";
+import DOMPurify from "dompurify";
 
 export const UpdateNewsForm = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm<INews>();
@@ -27,7 +28,10 @@ export const UpdateNewsForm = () => {
 
     const onSubmit: SubmitHandler<INews> = (data) => {
         if(currentNews){
-            dispatch(updateNews({ id: currentNews._id as string, data }))
+            dispatch(updateNews({ id: currentNews._id as string, data: {
+                ...data,
+                content: DOMPurify.sanitize(data.content as string)
+            }}))
                 .then(() => dispatch(fetchLastNews({limit: 5})))
         }
     }

@@ -8,6 +8,7 @@ import { INews } from "../../interfaces/interfaces";
 import { useEffect } from "react";
 import { TextareaField } from "../forms/TextareaField";
 import { Button } from "../Button";
+import DOMPurify from "dompurify";
 
 export const AddNewsForm = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm<INews>();
@@ -22,7 +23,10 @@ export const AddNewsForm = () => {
     }, [reset])
 
     const onSubmit: SubmitHandler<INews> = (data) => {
-        dispatch(addNews(data))
+        dispatch(addNews({
+            ...data,
+            content: DOMPurify.sanitize(data.content as string)
+        }))
             .then(() => dispatch(fetchLastNews({limit: 5})))
         reset();
     }
