@@ -29,7 +29,7 @@ export const RegisterForm = () => {
                 register={register} errors={errors} pattern={emailPattern}
             />
             <InputField label='Password' type='password' name='password' required 
-                register={register} errors={errors} 
+                register={register} errors={errors} minLength={6}
             />
             <Button text='Register' isLoading={isLoading} />
         </form>

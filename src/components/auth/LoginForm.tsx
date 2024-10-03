@@ -23,7 +23,7 @@ export const LoginForm = () => {
                 register={register} errors={errors} pattern={emailPattern}
             />
             <InputField label='Password' type='password' name='password' required 
-                register={register} errors={errors} 
+                register={register} errors={errors} minLength={6}
             />
             <Button text='Login' isLoading={isLoading} />
         </form>
