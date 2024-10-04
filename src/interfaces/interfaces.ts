@@ -60,6 +60,11 @@ export interface IUsersState {
 export interface IError {
   response: {
     data: {
+      error: [
+        {
+          message: string
+        }
+      ],
       code: number,
       status: string,
       message: string

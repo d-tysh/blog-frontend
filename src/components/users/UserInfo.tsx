@@ -31,7 +31,7 @@ export const UserInfo = () => {
             {
                 !isLoading && !error && userInfo &&
                 <form className="form w-full md:w-[400px]">
-                    <InputField label='Name:' name='name' required register={register} errors={errors} />
+                    <InputField label='Name:' name='name' required register={register} errors={errors} minLength={2} />
                     <InputField label='Email:' name='email' required register={register} errors={errors} pattern={emailPattern}/>
                     {
                         currentUser?.role === 'admin' ?

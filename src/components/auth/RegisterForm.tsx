@@ -5,7 +5,6 @@ import { selectIsLoading } from "../../redux/auth/selectors";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { IRegisterForm } from "../../interfaces/interfaces";
 import { InputField } from "../forms/InputField";
-import { getAllUsers } from "../../redux/users/actions";
 import { Button } from "../Button";
 import { emailPattern } from "../../constants";
 
@@ -15,20 +14,19 @@ export const RegisterForm = () => {
     const dispatch = useAppDispatch();
 
     const onSubmit: SubmitHandler<IRegisterForm> = (data) => {
-        dispatch(userRegister(data));
-        dispatch(getAllUsers());
-        reset();
+        dispatch(userRegister(data))
+            .then(() => reset())
     }
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} className="form w-full sm:w-[400px]">
-            <InputField label='Name' name='name' required 
-                register={register} errors={errors} 
+            <InputField label='Name' name='name' required
+                register={register} errors={errors} minLength={2}
             />
-            <InputField label='Email' name='email' required 
+            <InputField label='Email' name='email' required
                 register={register} errors={errors} pattern={emailPattern}
             />
-            <InputField label='Password' type='password' name='password' required 
+            <InputField label='Password' type='password' name='password' required
                 register={register} errors={errors} minLength={6}
             />
             <Button text='Register' isLoading={isLoading} />
