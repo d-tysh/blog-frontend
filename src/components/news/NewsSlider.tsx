@@ -8,9 +8,10 @@ export const NewsSlider = () => {
     const lastNews = useSelector(selectLastNews);
 
     return (
+        lastNews.length &&
         <Slider>
             {
-                lastNews && lastNews.map(item => <SwiperSlide key={item._id}>
+                lastNews.map(item => <SwiperSlide key={item._id}>
                     <div className="flex justify-center h-[300px] sm:px-16">
                         <NavLink
                             to={`/news/${item._id}`}
