@@ -6,6 +6,7 @@ import { SyntheticEvent, useEffect } from "react";
 import { fetchNews } from "../../redux/news/actions";
 import { Loader } from "../Loader";
 import { Pagination } from "../Pagination";
+import { Error } from "../Error";
 
 export const NewsList = () => {
     const newsList = useSelector(selectNewsList);
@@ -32,6 +33,7 @@ export const NewsList = () => {
                         { newsList.map((item) => <NewsListItem item={item} key={item._id} />) }
                     </ul>
                 }
+                { !isLoading && error && <Error /> }
             </div>
             <Pagination limit={limit} clickHandler={loadNews} />
         </>

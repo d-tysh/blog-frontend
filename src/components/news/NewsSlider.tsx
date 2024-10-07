@@ -1,17 +1,19 @@
 import { useSelector } from "react-redux";
-import { selectIsLoading, selectLastNews } from "../../redux/news/selectors";
+import { selectError, selectIsLoading, selectLastNews } from "../../redux/news/selectors";
 import { Slider } from "../Slider";
 import { SwiperSlide } from "swiper/react";
 import { NavLink } from "react-router-dom";
 import { Loader } from "../Loader";
+import { Error } from "../Error";
 
 export const NewsSlider = () => {
     const lastNews = useSelector(selectLastNews);
     const isLoading = useSelector(selectIsLoading);
+    const error = useSelector(selectError);
 
     return (
         <>
-            {isLoading && !lastNews.length && <Loader />}
+            {isLoading && !error && !lastNews.length && <Loader />}
             {
                 !isLoading && lastNews.length > 0 &&
                 <Slider>
@@ -27,6 +29,7 @@ export const NewsSlider = () => {
                     }
                 </Slider>
             }
+            { error && !isLoading && !lastNews.length && <Error /> }
         </>
     );
 };
