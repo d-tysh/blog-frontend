@@ -34,7 +34,7 @@ export const AddNewsForm = () => {
     return (
         <form onSubmit={handleSubmit(onSubmit)} className="form w-full xl:w-[800px]">
             <InputField label="Title" type="text" name="title" required
-                register={register} errors={errors}
+                register={register} errors={errors} minLength={5}
             />
             <InputField label="Date" type="date" name="date" required
                 register={register} errors={errors}

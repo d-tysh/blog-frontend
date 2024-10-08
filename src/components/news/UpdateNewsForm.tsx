@@ -39,13 +39,13 @@ export const UpdateNewsForm = () => {
     return (
         <form onSubmit={handleSubmit(onSubmit)} className="form">
             <InputField label="Title" type="text" name="title" required
-                register={register} errors={errors}
+                register={register} errors={errors} minLength={5}
             />
             <InputField label="Date" type="date" name="date" required
                 register={register} errors={errors}
             />
             <InputField label="Url" type="string" name="url" required
-                register={register} errors={errors}
+                register={register} errors={errors} minLength={5}
             />
             <TextareaField label="Content" name="content" register={register} />
             <Button text='📝 Update' isLoading={isLoading} />

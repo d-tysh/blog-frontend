@@ -26,7 +26,7 @@ export const fetchLastNews = createAsyncThunk(
             const response = await axios.get(`/news?&limit=${limit}`);
             return response.data;
         } catch (error) {
-            return thunkApi.rejectWithValue((error as Error).message);
+            return thunkApi.rejectWithValue((error as Error));
         }
     }
 )
@@ -38,7 +38,7 @@ export const fetchNewsById = createAsyncThunk(
             const response = await axios.get(`/news/${id}`);
             return response.data.result;
         } catch (error) {
-            return thunkApi.rejectWithValue((error as Error).message);
+            return thunkApi.rejectWithValue((error as Error));
         }
     }
 )
@@ -52,6 +52,8 @@ export const addNews = createAsyncThunk(
                 return toast.success(response.data.message);
             }
         } catch (error) {
+            const { message } = (error as IError).response.data;
+            toast.error(message);
             return thunkApi.rejectWithValue((error as Error).message);
         }
     }
@@ -64,7 +66,8 @@ export const updateNews = createAsyncThunk(
             const response = await axios.patch(`/news/${id}`, data);
             toast.success(response.data.message);
         } catch (error) {
-            toast.error((error as IError).response.data.message);
+            const { message } = (error as IError).response.data;
+            toast.error(message);
             return thunkApi.rejectWithValue((error as Error).message);
         }
     }
@@ -77,7 +80,8 @@ export const deleteNews = createAsyncThunk(
             const response = await axios.delete(`/news/${id}`);
             toast.info(response.data.message);
         } catch (error) {
-            toast.error((error as IError).response.data.message);
+            const { message } = (error as IError).response.data;
+            toast.error(message);
             return thunkApi.rejectWithValue((error as Error).message);
         }
     }
