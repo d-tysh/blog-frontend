@@ -6,7 +6,7 @@ import { fetchNewsById } from "../redux/news/actions";
 import { useParams } from "react-router-dom";
 import { Loader } from "../components/Loader";
 import { OneNewsInfo } from "../components/news/OneNewsInfo";
-import { Error } from "../components/Error";
+import PageNotFound from "./PageNotFound";
 
 const OneNewsPage = () => {
     const newsItem = useSelector(selectNewsItem);
@@ -24,7 +24,7 @@ const OneNewsPage = () => {
         <>
             { isLoading && !error && <Loader size={40} /> }
             { !isLoading && !error && newsItem && <OneNewsInfo newsItem={newsItem} /> }
-            { !isLoading && error && !newsItem && <Error /> }
+            { !isLoading && error && !newsItem && <PageNotFound /> }
         </>
     )
 }
