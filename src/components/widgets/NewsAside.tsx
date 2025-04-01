@@ -15,7 +15,7 @@ export const NewsAside = () => {
     const dispatch = useAppDispatch();
 
     useEffect(() => {
-        dispatch(fetchLastNews({limit: 5}))
+        dispatch(fetchLastNews(5))
     }, [dispatch])
 
     return (

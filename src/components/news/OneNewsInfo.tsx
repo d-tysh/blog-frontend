@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useAppDispatch } from "../../hooks";
 import { INews } from "../../interfaces/interfaces"
-import { deleteNews, fetchLastNews, setCurrentNews } from "../../redux/news/actions";
+import { deleteNews, setCurrentNews } from "../../redux/news/actions";
 import { getDate } from "../../utils/dateUtils"
 import { useSelector } from "react-redux";
 import { selectIsLoggedIn, selectUser } from "../../redux/auth/selectors";
@@ -22,10 +22,7 @@ export const OneNewsInfo = ({ newsItem }: { newsItem: INews }) => {
     const onDelete = () => {
         if (newsId) {
             dispatch(deleteNews(newsId))
-                .then(() => {
-                    dispatch(fetchLastNews({ limit: 5 }));
-                    navigate('/news');
-                })
+            navigate('/news');
         }
     }
 

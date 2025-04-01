@@ -21,7 +21,8 @@ export const fetchNews = createAsyncThunk(
 
 export const fetchLastNews = createAsyncThunk(
     'news/fetchLastNews',
-    async ({limit}: {limit?: number}, thunkApi) => {
+    async (limit: number, thunkApi) => {
+        if (limit < 1) limit = 1; 
         try {
             const response = await axios.get(`/news?&limit=${limit}`);
             return response.data;
@@ -79,6 +80,7 @@ export const deleteNews = createAsyncThunk(
         try {
             const response = await axios.delete(`/news/${id}`);
             toast.info(response.data.message);
+            thunkApi.dispatch(fetchLastNews(5));
         } catch (error) {
             const { message } = (error as IError).response.data;
             toast.error(message);

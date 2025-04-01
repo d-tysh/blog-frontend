@@ -32,7 +32,7 @@ export const UpdateNewsForm = () => {
                 ...data,
                 content: DOMPurify.sanitize(data.content as string)
             }}))
-                .then(() => dispatch(fetchLastNews({limit: 5})))
+                .then(() => dispatch(fetchLastNews(5)))
         }
     }
 
