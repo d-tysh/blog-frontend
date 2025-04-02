@@ -19,7 +19,7 @@ export const NewsList = () => {
         dispatch(fetchNews({ page: 1, limit }));
     }, [dispatch])
 
-    const loadNews = async (e: SyntheticEvent<HTMLButtonElement>, page: number) => {
+    const loadNews = (e: SyntheticEvent<HTMLButtonElement>, page: number) => {
         e.preventDefault();
         dispatch(fetchNews({ page, limit }));
     }
