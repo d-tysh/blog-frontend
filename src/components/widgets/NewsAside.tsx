@@ -22,13 +22,13 @@ export const NewsAside = () => {
         <div className="aside-item">
             <h4>Last News:</h4>
             <ul className="list-disc ml-4">
-                { isLoading && !error && !lastNews.length && <Loader /> }
+                { isLoading && <Loader /> }
                 {
-                    lastNews && lastNews.map(item => <li key={item._id}>
+                    !isLoading && !error && lastNews && lastNews.map(item => <li key={item._id}>
                         <NavLink to={`/news/${item._id}`} className='text-sm'>{item.title}</NavLink>
                     </li>)
                 }
-                { !isLoading && !lastNews.length && error && <Error width={150} /> }
+                { !isLoading && error && <Error width={150} /> }
             </ul>
         </div>
     )
