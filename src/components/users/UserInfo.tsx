@@ -12,6 +12,7 @@ import { SelectField } from "../forms/SelectField";
 import { useUpdateUser } from "../hooks/useUpdateUser";
 import useGetUserInfo from "../hooks/useGetUserInfo";
 import { emailPattern } from "../../constants";
+import { Error } from "../Error";
 
 export const UserInfo = () => {
     const currentUser = useSelector(selectUser);
@@ -45,6 +46,7 @@ export const UserInfo = () => {
                     />
                 </form>
             }
+            { !isLoading && error && <Error />}
         </>
     )
 }

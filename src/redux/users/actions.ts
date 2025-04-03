@@ -1,7 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { IUserInfo } from "../../interfaces/interfaces";
+import { IError, IUserInfo } from "../../interfaces/interfaces";
 import { toast } from "react-toastify";
+import { fetchCurrentUser } from "../auth/actions";
 
 const { VITE_API_URL } = import.meta.env;
 
@@ -26,6 +27,8 @@ export const getUserInfo = createAsyncThunk(
             const response = await axios.get(`/users/${id}`);
             return response.data;
         } catch (error) {
+            const { message } = (error as IError).response.data;
+            toast.error(message);
             return thunkAPI.rejectWithValue(error);
         }
     }
@@ -37,6 +40,7 @@ export const updateUserInfo = createAsyncThunk(
         try {
             const { data } = await axios.patch(`/users/${userId}`, userInfo);
             toast.success(data.message);
+            thunkAPI.dispatch(fetchCurrentUser());
         } catch (error) {
             return thunkAPI.rejectWithValue(error);
         }
