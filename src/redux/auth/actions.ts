@@ -21,11 +21,9 @@ export const register = createAsyncThunk(
     async ({ name, email, password }: IUser, thunkApi) => {
         try {
             const response = await axios.post(`/users/register`, { name, email, password });
-            toast.success(response.data.message);
+            return response;
         } catch (error) {
-            const { response } = error as IError;
-            toast.error(response.data.message);
-            return thunkApi.rejectWithValue((error as Error));
+            return thunkApi.rejectWithValue(error as Error);
         }
     }
 )

@@ -7,6 +7,7 @@ import { IRegisterForm } from "../../interfaces/interfaces";
 import { InputField } from "../forms/InputField";
 import { Button } from "../Button";
 import { emailPattern } from "../../constants";
+import { toast } from "react-toastify";
 
 export const RegisterForm = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm<IRegisterForm>();
@@ -15,7 +16,16 @@ export const RegisterForm = () => {
 
     const onSubmit: SubmitHandler<IRegisterForm> = (data) => {
         dispatch(userRegister(data))
-            .then(() => reset())
+            .unwrap()
+            .then((res) => {
+                const { message } = res.data;
+                toast.success(message);
+                reset();
+            })
+            .catch(error => {
+                const { message } = error.response.data;
+                toast.error(message);
+        })
     }
 
     return (
