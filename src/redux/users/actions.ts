@@ -2,7 +2,6 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { IError, IUserInfo } from "../../interfaces/interfaces";
 import { toast } from "react-toastify";
-import { fetchCurrentUser } from "../auth/actions";
 
 const { VITE_API_URL } = import.meta.env;
 
@@ -38,9 +37,8 @@ export const updateUserInfo = createAsyncThunk(
     'users/updateUserInfo',
     async ({userId, userInfo}: {userId: string, userInfo: IUserInfo}, thunkAPI) => {
         try {
-            const { data } = await axios.patch(`/users/${userId}`, userInfo);
-            toast.success(data.message);
-            thunkAPI.dispatch(fetchCurrentUser());
+            const response = await axios.patch(`/users/${userId}`, userInfo);
+            return response;
         } catch (error) {
             return thunkAPI.rejectWithValue(error);
         }
