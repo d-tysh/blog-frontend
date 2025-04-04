@@ -1,7 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { IError, IUser } from "../../interfaces/interfaces";
-import { toast } from "react-toastify";
+import { IUser } from "../../interfaces/interfaces";
 import { RootState } from "../store";
 
 const { VITE_API_URL } = import.meta.env;
@@ -36,8 +35,6 @@ export const login = createAsyncThunk(
             setAuthHeader(data.data.token);
             return data;
         } catch (error) {
-            const { response } = error as IError;
-            toast.error(response.data.message);
             return thunkApi.rejectWithValue((error as Error));
         }
     }
@@ -50,8 +47,6 @@ export const logout = createAsyncThunk(
             await axios.post(`/users/logout`);
             clearAuthHeader();
         } catch (error) {
-            const { response } = error as IError;
-            toast.error(response.data.message);
             return thunkApi.rejectWithValue((error as Error));
         }
     }

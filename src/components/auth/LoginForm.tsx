@@ -7,6 +7,7 @@ import { ILoginForm } from "../../interfaces/interfaces";
 import { InputField } from "../forms/InputField";
 import { Button } from "../Button";
 import { emailPattern } from "../../constants";
+import { toast } from "react-toastify";
 
 export const LoginForm = () => {
     const { register, handleSubmit, formState: { errors } } = useForm<ILoginForm>();
@@ -14,7 +15,12 @@ export const LoginForm = () => {
     const dispatch = useAppDispatch();
 
     const onSubmit: SubmitHandler<ILoginForm> = (data) => {
-        dispatch(login(data));
+        dispatch(login(data))
+            .unwrap()
+            .catch((error) => {
+                const { message } = error.response.data;
+                toast.error(message);
+            })
     }
 
     return (
