@@ -1,7 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { IUserInfo } from "../../interfaces/interfaces";
-import { toast } from "react-toastify";
 
 const { VITE_API_URL } = import.meta.env;
 
@@ -48,7 +47,7 @@ export const deleteUserById = createAsyncThunk(
     async (id: string, thunkAPI) => {
         try {
             const { data } = await axios.delete(`users/${id}`);
-            toast.info(data.message);
+            return data;
         } catch (error) {
             return thunkAPI.rejectWithValue(error);
         }

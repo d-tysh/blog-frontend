@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../hooks";
 import { deleteUserById } from "../../redux/users/actions";
 import { fetchCurrentUser } from "../../redux/auth/actions";
+import { toast } from "react-toastify";
 
 export const useDeleteUser = (userId: string | undefined) => {
     const currentUser = useSelector(selectUser);
@@ -13,7 +14,8 @@ export const useDeleteUser = (userId: string | undefined) => {
     const onDeleteUser = () => {
         if (currentUser && userId) {
             dispatch(deleteUserById(userId))
-                .then(() => {
+                .unwrap()
+                .then((res) => {
                     if (currentUser.role === 'admin'){
                         navigate('/users');
                     } 
@@ -21,6 +23,11 @@ export const useDeleteUser = (userId: string | undefined) => {
                         dispatch(fetchCurrentUser())
                         navigate('/');
                     }
+                    toast.info(res.message);
+                })
+                .catch(error => {
+                    const errorMessage = error.response.data.message || 'Failed to delete user';
+                    toast.error(errorMessage);
                 })
         }
     }
