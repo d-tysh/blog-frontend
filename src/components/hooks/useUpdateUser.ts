@@ -1,7 +1,7 @@
 import { SubmitHandler } from "react-hook-form";
 import { IUserInfo } from "../../interfaces/interfaces";
 import { useAppDispatch } from "../../hooks";
-import { updateUserInfo } from "../../redux/users/actions";
+import { getUserInfo, updateUserInfo } from "../../redux/users/actions";
 import { toast } from "react-toastify";
 import { fetchCurrentUser } from "../../redux/auth/actions";
 import { useSelector } from "react-redux";
@@ -19,7 +19,8 @@ export const useUpdateUser = (userId: string | undefined) => {
             .unwrap()
             .then((res) => {
                 if (currentUser?.id === userId) dispatch(fetchCurrentUser());
-                toast.success(res.data.message)
+                dispatch(getUserInfo(userId));
+                toast.success(res.data.message);
             })
             .catch(error => {
                 const errorMessage = error.response.data.message || "Failed to update user";
