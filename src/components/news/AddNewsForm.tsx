@@ -9,6 +9,7 @@ import { useEffect } from "react";
 import { TextareaField } from "../forms/TextareaField";
 import { Button } from "../Button";
 import DOMPurify from "dompurify";
+import { toast } from "react-toastify";
 
 export const AddNewsForm = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm<INews>();
@@ -27,8 +28,17 @@ export const AddNewsForm = () => {
             ...data,
             content: DOMPurify.sanitize(data.content as string)
         }))
-            .then(() => dispatch(fetchLastNews(5)))
-        reset();
+            .unwrap()
+            .then(res => {
+                dispatch(fetchLastNews(5));
+                toast.success(res.message);
+                reset();
+            })
+            .catch(error => {
+                const { message } = error.response.data;
+                toast.error(message);
+                dispatch(fetchLastNews(5));
+            })
     }
 
     return (
