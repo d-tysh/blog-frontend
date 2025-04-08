@@ -30,15 +30,14 @@ export const AddNewsForm = () => {
         }))
             .unwrap()
             .then(res => {
-                dispatch(fetchLastNews(5));
                 toast.success(res.message);
                 reset();
             })
             .catch(error => {
                 const { message } = error.response.data;
                 toast.error(message);
-                dispatch(fetchLastNews(5));
             })
+            .finally(() => dispatch(fetchLastNews(5)))
     }
 
     return (

@@ -1,11 +1,12 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useAppDispatch } from "../../hooks";
 import { INews } from "../../interfaces/interfaces"
-import { deleteNews, setCurrentNews } from "../../redux/news/actions";
+import { deleteNews, fetchLastNews, setCurrentNews } from "../../redux/news/actions";
 import { getDate } from "../../utils/dateUtils"
 import { useSelector } from "react-redux";
 import { selectIsLoggedIn, selectUser } from "../../redux/auth/selectors";
 import { Button } from "../Button";
+import { toast } from "react-toastify";
 
 export const OneNewsInfo = ({ newsItem }: { newsItem: INews }) => {
     const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -22,7 +23,16 @@ export const OneNewsInfo = ({ newsItem }: { newsItem: INews }) => {
     const onDelete = () => {
         if (newsId) {
             dispatch(deleteNews(newsId))
-            navigate('/news');
+                .unwrap()
+                .then(res => {
+                    toast.info(res.message);
+                    navigate('/news');
+                    dispatch(fetchLastNews(5));
+                })
+                .catch(error => {
+                    const { message } = error.response.data;
+                    toast.error(message);
+                })
         }
     }
 

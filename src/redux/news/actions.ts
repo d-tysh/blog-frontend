@@ -1,7 +1,6 @@
 import { createAction, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { IError, INews } from "../../interfaces/interfaces";
-import { toast } from "react-toastify";
+import { INews } from "../../interfaces/interfaces";
 
 const { VITE_API_URL } = import.meta.env;
 
@@ -14,7 +13,7 @@ export const fetchNews = createAsyncThunk(
             const response = await axios.get(`/news?page=${page}&limit=${limit}`);
             return response.data;
         } catch (error) {
-            return thunkApi.rejectWithValue((error as Error).message);
+            return thunkApi.rejectWithValue(error);
         }
     }
 )
@@ -27,7 +26,7 @@ export const fetchLastNews = createAsyncThunk(
             const response = await axios.get(`/news?&limit=${limit}`);
             return response.data;
         } catch (error) {
-            return thunkApi.rejectWithValue((error as Error));
+            return thunkApi.rejectWithValue(error);
         }
     }
 )
@@ -39,7 +38,7 @@ export const fetchNewsById = createAsyncThunk(
             const response = await axios.get(`/news/${id}`);
             return response.data.result;
         } catch (error) {
-            return thunkApi.rejectWithValue((error as Error));
+            return thunkApi.rejectWithValue(error);
         }
     }
 )
@@ -54,7 +53,7 @@ export const addNews = createAsyncThunk(
             }
             return response.data;
         } catch (error) {
-            return thunkApi.rejectWithValue((error as Error));
+            return thunkApi.rejectWithValue(error);
         }
     }
 )
@@ -64,11 +63,9 @@ export const updateNews = createAsyncThunk(
     async ({id, data}: {id: string, data: INews}, thunkApi) => {
         try {
             const response = await axios.patch(`/news/${id}`, data);
-            toast.success(response.data.message);
+            return response.data;
         } catch (error) {
-            const { message } = (error as IError).response.data;
-            toast.error(message);
-            return thunkApi.rejectWithValue((error as Error).message);
+            return thunkApi.rejectWithValue(error);
         }
     }
 )
@@ -78,12 +75,9 @@ export const deleteNews = createAsyncThunk(
     async (id: string, thunkApi) => {
         try {
             const response = await axios.delete(`/news/${id}`);
-            toast.info(response.data.message);
-            thunkApi.dispatch(fetchLastNews(5));
+            return response.data;
         } catch (error) {
-            const { message } = (error as IError).response.data;
-            toast.error(message);
-            return thunkApi.rejectWithValue((error as Error).message);
+            return thunkApi.rejectWithValue(error);
         }
     }
 )
