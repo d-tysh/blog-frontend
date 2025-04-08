@@ -8,8 +8,8 @@ import { INews } from "../../interfaces/interfaces";
 import { useEffect } from "react";
 import { TextareaField } from "../forms/TextareaField";
 import { Button } from "../Button";
-import DOMPurify from "dompurify";
 import { toast } from "react-toastify";
+import sanitizeNews from "../../utils/sanitizeData";
 
 export const AddNewsForm = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm<INews>();
@@ -24,10 +24,7 @@ export const AddNewsForm = () => {
     }, [reset])
 
     const onSubmit: SubmitHandler<INews> = (data) => {
-        dispatch(addNews({
-            ...data,
-            content: DOMPurify.sanitize(data.content as string)
-        }))
+        dispatch(addNews(sanitizeNews(data)))
             .unwrap()
             .then(res => {
                 toast.success(res.message);
