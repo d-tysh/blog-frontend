@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import { selectIsLoggedIn, selectUser } from "../../redux/auth/selectors";
 import { Button } from "../Button";
 import { toast } from "react-toastify";
+import errorNotify from "../../utils/errorNotify";
 
 export const OneNewsInfo = ({ newsItem }: { newsItem: INews }) => {
     const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -27,12 +28,9 @@ export const OneNewsInfo = ({ newsItem }: { newsItem: INews }) => {
                 .then(res => {
                     toast.info(res.message);
                     navigate('/news');
-                    dispatch(fetchLastNews(5));
                 })
-                .catch(error => {
-                    const { message } = error.response.data;
-                    toast.error(message);
-                })
+                .catch(errorNotify)
+                .finally(() => dispatch(fetchLastNews(5)))
         }
     }
 

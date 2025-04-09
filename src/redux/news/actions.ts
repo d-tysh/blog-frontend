@@ -49,7 +49,7 @@ export const addNews = createAsyncThunk(
         try {
             const response = await axios.post('/news', data);
             if (response.status !== 201) {
-                return thunkApi.rejectWithValue('Invalid status code');
+                return thunkApi.rejectWithValue({message: 'Invalid status code'});
             }
             return response.data;
         } catch (error) {

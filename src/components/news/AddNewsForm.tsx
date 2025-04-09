@@ -10,6 +10,7 @@ import { TextareaField } from "../forms/TextareaField";
 import { Button } from "../Button";
 import { toast } from "react-toastify";
 import sanitizeNews from "../../utils/sanitizeData";
+import errorNotify from "../../utils/errorNotify";
 
 export const AddNewsForm = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm<INews>();
@@ -30,10 +31,7 @@ export const AddNewsForm = () => {
                 toast.success(res.message);
                 reset();
             })
-            .catch(error => {
-                const { message } = error.response.data;
-                toast.error(message);
-            })
+            .catch(errorNotify)
             .finally(() => dispatch(fetchLastNews(5)))
     }
 
