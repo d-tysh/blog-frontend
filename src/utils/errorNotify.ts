@@ -1,4 +1,4 @@
-import { AxiosError } from "axios";
+import { isAxiosError } from "axios";
 import { toast } from "react-toastify";
 
 interface IErrorResponse {
@@ -7,11 +7,17 @@ interface IErrorResponse {
 }
 
 const errorNotify = (
-    error: AxiosError<IErrorResponse>, 
+    error: unknown,
     defaultMessage = 'Error: something went wrong...'
 ) => {
-    const message = error.response?.data?.message || defaultMessage;
-    toast.error(message);
+    if (isAxiosError<IErrorResponse>(error)) {
+        const message = error.response?.data?.message || error.message || defaultMessage;
+        toast.error(message);
+    } else if (error instanceof Error) {
+        toast.error(error.message || defaultMessage);
+    } else {
+        toast.error(defaultMessage);
+    }
 }
 
 export default errorNotify;
