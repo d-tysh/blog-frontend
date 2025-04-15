@@ -10,8 +10,8 @@ export const NewsListItem = ({ item }: { item: INews }) => {
     return (
         <li key={item._id} className="news-list-item">
             {
-                item._id && 
-                <NavLink to={item._id}>
+                item.url &&
+                <NavLink to={item.url}>
                     <h3 className="text-base font-bold">{item.title}</h3>
                 </NavLink>
             }

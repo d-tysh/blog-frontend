@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../hooks";
 import { INews } from "../../interfaces/interfaces"
 import { deleteNews, fetchLastNews, setCurrentNews } from "../../redux/news/actions";
@@ -12,18 +12,17 @@ import errorNotify from "../../utils/errorNotify";
 export const OneNewsInfo = ({ newsItem }: { newsItem: INews }) => {
     const isLoggedIn = useSelector(selectIsLoggedIn);
     const user = useSelector(selectUser);
-    const { newsId } = useParams();
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
 
     const onUpdate = () => {
         dispatch(setCurrentNews(newsItem));
-        navigate(`/news/update/${newsItem?._id}`);
+        navigate(`/news/update/${newsItem?.url}`);
     }
 
     const onDelete = () => {
-        if (newsId) {
-            dispatch(deleteNews(newsId))
+        if (newsItem) {
+            dispatch(deleteNews(newsItem._id as string))
                 .unwrap()
                 .then(res => {
                     toast.info(res.message);

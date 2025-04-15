@@ -11,11 +11,13 @@ import { Button } from "../Button";
 import { toast } from "react-toastify";
 import sanitizeNews from "../../utils/sanitizeData";
 import errorNotify from "../../utils/errorNotify";
+import { useNavigate } from "react-router-dom";
 
 export const UpdateNewsForm = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm<INews>();
     const currentNews = useSelector(selectCurrentNews);
     const isLoading = useSelector(selectIsLoading);
+    const navigate = useNavigate();
 
     const dispatch = useAppDispatch();
 
@@ -34,7 +36,10 @@ export const UpdateNewsForm = () => {
         if(currentNews){
             dispatch(updateNews({ id: currentNews._id as string, data: sanitizeNews(data)}))
                 .unwrap()
-                .then(res => toast.success(res.message))
+                .then(res => {
+                    toast.success(res.message);
+                    navigate(`/news/${res.result.url}`);
+                })
                 .catch(errorNotify)
                 .finally(() => dispatch(fetchLastNews(5)))
         }

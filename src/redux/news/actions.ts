@@ -35,7 +35,19 @@ export const fetchNewsById = createAsyncThunk(
     'news/fetchNewsById',
     async (id: string, thunkApi) => {
         try {
-            const response = await axios.get(`/news/${id}`);
+            const response = await axios.get(`/news/id/${id}`);
+            return response.data.result;
+        } catch (error) {
+            return thunkApi.rejectWithValue(error);
+        }
+    }
+)
+
+export const fetchNewsByURL = createAsyncThunk(
+    'news/fetchNewsByURL',
+    async (url: string, thunkApi) => {
+        try {
+            const response = await axios.get(`/news/${url}`);
             return response.data.result;
         } catch (error) {
             return thunkApi.rejectWithValue(error);

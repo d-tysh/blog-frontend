@@ -25,7 +25,7 @@ export const NewsAside = () => {
                 { isLoading && <Loader /> }
                 {
                     !isLoading && !error && lastNews && lastNews.map(item => <li key={item._id}>
-                        <NavLink to={`/news/${item._id}`} className='text-sm'>{item.title}</NavLink>
+                        <NavLink to={`/news/${item.url}`} className='text-sm'>{item.title}</NavLink>
                     </li>)
                 }
                 { !isLoading && error && <Error width={150} /> }

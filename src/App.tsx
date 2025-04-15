@@ -45,7 +45,7 @@ function App() {
           <Route path='/add-news' 
             element={<PrivateRoute redirectTo='/login' component={<AddNewsPage />} />} 
           />
-          <Route path='/news/:newsId' element={<OneNewsPage />} />
+          <Route path='/news/:newsUrl' element={<OneNewsPage />} />
           <Route path='/news/update/:newsId' element={
             <PrivateRoute redirectTo='/login' component={<UpdateNewsPage />} />
           } />
