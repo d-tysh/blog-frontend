@@ -5,7 +5,7 @@ import { useAppDispatch } from "../../hooks";
 import { logout } from "../../redux/auth/actions";
 import { Loader } from "../Loader";
 import { Button } from "../Button";
-import { toast } from "react-toastify";
+import errorNotify from "../../utils/errorNotify";
 
 export const HeaderAuth = () => {
     const isFetchingCurrUser = useSelector(selectIsFetchingCurrUser);
@@ -20,10 +20,7 @@ export const HeaderAuth = () => {
         dispatch(logout())
             .unwrap()
             .then(() => navigate('/login'))
-            .catch(error => {
-                const { message } = error.response.data;
-                toast.error(message);
-            })
+            .catch(errorNotify)
     }
 
     return (
