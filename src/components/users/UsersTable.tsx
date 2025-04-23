@@ -1,4 +1,3 @@
-import classNames from "classnames"
 import { IUser } from "../../interfaces/interfaces"
 import { NavLink } from "react-router-dom"
 
@@ -6,7 +5,7 @@ export const UsersTable = ({ users }: { users: IUser[] }) => {
     return (
         <table className="w-[100%] mb-4">
             <thead className="text-left">
-                <tr>
+                <tr className="text-center">
                     <th></th>
                     <th>Name</th>
                     <th>Email</th>
@@ -17,7 +16,7 @@ export const UsersTable = ({ users }: { users: IUser[] }) => {
                 {
                     users.map(user =>
                         <tr key={user._id}
-                            className={classNames({ 'bg-orange-300': user.role === 'admin' })}
+                            className={`${user.role === 'admin' ? 'bg-orange-300 hover:bg-orange-400' : 'hover:bg-slate-300'}`}
                         >
                             <td className="text-center w-[100px]">
                                 <NavLink to={`/users/${user._id}`}>✎ Edit</NavLink>
