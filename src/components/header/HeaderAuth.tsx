@@ -6,6 +6,7 @@ import { logout } from "../../redux/auth/actions";
 import { Loader } from "../Loader";
 import { Button } from "../Button";
 import errorNotify from "../../utils/errorNotify";
+import { userStatus } from "../../utils/userStatus";
 
 export const HeaderAuth = () => {
     const isFetchingCurrUser = useSelector(selectIsFetchingCurrUser);
@@ -29,6 +30,7 @@ export const HeaderAuth = () => {
             {
                 isLoggedIn && user && !isFetchingCurrUser &&
                 <div className="hidden lg:flex items-center gap-3">
+                    { user.isOnline && userStatus('Online', '🟢') }
                     <NavLink to={`/users/${user.id}`}>👋 Hello, {user.name}!</NavLink>
                     <Button text="🏁 Logout" width={120} isLoading={isLoading} onClick={handleLogout} />
                 </div>

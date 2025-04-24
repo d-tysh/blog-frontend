@@ -38,7 +38,8 @@ export interface IUser {
   email?: string,
   password?: string,
   role?: 'admin' | 'user',
-  token?: string
+  token?: string,
+  isOnline?: boolean
 }
 
 export interface IAuthState {
