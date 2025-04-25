@@ -1,5 +1,6 @@
 import { IUser } from "../../interfaces/interfaces"
 import { NavLink } from "react-router-dom"
+import { userStatus } from "../../utils/userStatus"
 
 export const UsersTable = ({ users }: { users: IUser[] }) => {
     return (
@@ -7,6 +8,7 @@ export const UsersTable = ({ users }: { users: IUser[] }) => {
             <thead className="text-left">
                 <tr className="text-center">
                     <th></th>
+                    <th>Online</th>
                     <th>Name</th>
                     <th>Email</th>
                     <th>Role</th>
@@ -21,6 +23,7 @@ export const UsersTable = ({ users }: { users: IUser[] }) => {
                             <td className="text-center w-[100px]">
                                 <NavLink to={`/users/${user._id}`}>✎ Edit</NavLink>
                             </td>
+                            <td className="text-center">{userStatus(user.isOnline)}</td>
                             <td>{user.name}</td>
                             <td>{user.email}</td>
                             <td>{user.role}</td>
