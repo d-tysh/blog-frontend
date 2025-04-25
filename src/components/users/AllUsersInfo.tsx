@@ -27,7 +27,7 @@ export const AllUsersInfo = () => {
                     <UsersTable users={users} />
                 </div>
             }
-            <div className="flex justify-center sm:justify-end mb-2">
+            <div className="flex justify-center sm:justify-end my-2">
                 <Button text="➕ Add new user" onClick={() => navigate('/users/add')} />
             </div>
         </>

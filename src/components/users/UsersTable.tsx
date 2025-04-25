@@ -4,7 +4,7 @@ import { userStatus } from "../../utils/userStatus"
 
 export const UsersTable = ({ users }: { users: IUser[] }) => {
     return (
-        <table className="w-[100%] mb-4">
+        <table className="w-[100%] mb-2">
             <thead className="text-left">
                 <tr className="text-center">
                     <th></th>
