@@ -30,7 +30,7 @@ export const HeaderAuth = () => {
             {
                 isLoggedIn && user && !isFetchingCurrUser &&
                 <div className="hidden lg:flex items-center gap-3">
-                    { user.isOnline && userStatus('Online', '🟢') }
+                    { userStatus(user.isOnline) }
                     <NavLink to={`/users/${user.id}`}>👋 Hello, {user.name}!</NavLink>
                     <Button text="🏁 Logout" width={120} isLoading={isLoading} onClick={handleLogout} />
                 </div>

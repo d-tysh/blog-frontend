@@ -1,4 +1,4 @@
-export const userStatus = (status: string, text: string) => 
-    <span title={status} className="cursor-pointer">
-        {text}
-    </span>;
+export const userStatus = (isOnline: boolean) => 
+    isOnline 
+    ? <span title='Online' className="cursor-pointer">🟢</span>
+    : <span title='Offline' className="cursor-pointer">🔴</span>
