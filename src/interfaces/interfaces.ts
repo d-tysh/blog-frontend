@@ -34,12 +34,22 @@ export interface INewsState {
 export interface IUser {
   id?: string,
   _id?: string,
-  name?: string,
-  email?: string,
-  password?: string,
-  role?: 'admin' | 'user',
+  name: string,
+  email: string,
+  role: 'admin' | 'user',
   token?: string,
-  isOnline?: boolean
+  isOnline: boolean
+}
+
+export interface IUserLogin {
+  email: string,
+  password: string,
+}
+
+export interface IUserRegister {
+  name: string,
+  email: string,
+  password: string,
 }
 
 export interface IAuthState {
