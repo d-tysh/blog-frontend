@@ -22,9 +22,9 @@ export const NewsAside = () => {
         <div className="aside-item">
             <h4>Last News:</h4>
             <ul className="list-disc ml-4">
-                { isLoading && <Loader /> }
+                { isLoading && !error && !lastNews.length && <Loader /> }
                 {
-                    !isLoading && !error && lastNews && lastNews.map(item => <li key={item._id}>
+                    lastNews && lastNews.map(item => <li key={item._id}>
                         <NavLink to={`/news/${item.url}`} className='text-sm'>{item.title}</NavLink>
                     </li>)
                 }
