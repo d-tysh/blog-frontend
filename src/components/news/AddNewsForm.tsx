@@ -43,7 +43,9 @@ export const AddNewsForm = () => {
             <InputField label="Date" type="date" name="date" required
                 register={register} errors={errors}
             />
-            <TextareaField label="Content" name="content" register={register} />
+            <TextareaField label="Content" name="content" required 
+                register={register} errors={errors}
+            />
             <Button text='📑 Publish' isLoading={isLoading} />
         </form>
     )
