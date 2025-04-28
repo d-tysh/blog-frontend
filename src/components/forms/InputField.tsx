@@ -26,7 +26,7 @@ export const InputField = <TFormValues extends Record<string, unknown>>(props: I
                         })
                     })}
                     className="form-field"
-                    style={{ height }}
+                    style={{ height, borderColor: errors && errors[name] && 'red' }}
                     readOnly={readonly}
                 />
             </label>

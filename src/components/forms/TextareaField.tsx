@@ -1,7 +1,7 @@
 import { IFormField } from "../../interfaces/interfaces"
 
 export const TextareaField = <TFormValues extends Record<string, unknown>>(props: IFormField<TFormValues>) => {
-    const { label, name, required = false, register, errors } = props;
+    const { label, name, required = false, height, register, errors } = props;
 
     return (
         <div className="relative">
@@ -11,7 +11,8 @@ export const TextareaField = <TFormValues extends Record<string, unknown>>(props
                     {...register(name, {
                         required: required && `${label} is required`
                     })}
-                    className="form-field min-h-[300px]"
+                    className="form-field"
+                    style={{ minHeight: `${height || 300}px`, borderColor: errors && errors[name] && 'red' }}
                 />
             </label>
             {
