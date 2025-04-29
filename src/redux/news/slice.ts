@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { addNews, fetchLastNews, fetchNews, fetchNewsById, fetchNewsByURL, updateNews } from "./actions";
+import { addComment, addNews, fetchLastNews, fetchNews, fetchNewsById, fetchNewsByURL, updateNews } from "./actions";
 import { INews, INewsState } from "../../interfaces/interfaces";
 
 const newsInitState: INewsState = {
@@ -78,6 +78,14 @@ const newsSlice = createSlice({
                 state.error = null;
             })
             .addCase(updateNews.rejected, handleRejected)
+
+            .addCase(addComment.pending, handlePenging)
+            .addCase(addComment.fulfilled, (state) => {
+                state.isLoading = false;
+                state.error = null;
+            })
+            .addCase(addComment.rejected, handleRejected)
+
     }
 })
 

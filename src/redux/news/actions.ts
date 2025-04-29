@@ -1,6 +1,6 @@
 import { createAction, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { INews } from "../../interfaces/interfaces";
+import { INews, INewsComment } from "../../interfaces/interfaces";
 
 const { VITE_API_URL } = import.meta.env;
 
@@ -87,6 +87,18 @@ export const deleteNews = createAsyncThunk(
     async (id: string, thunkApi) => {
         try {
             const response = await axios.delete(`/news/${id}`);
+            return response.data;
+        } catch (error) {
+            return thunkApi.rejectWithValue(error);
+        }
+    }
+)
+
+export const addComment = createAsyncThunk(
+    'news/addComment',
+    async ({newsId, data}: {newsId: string, data: INewsComment}, thunkApi) => {
+        try {
+            const response = await axios.patch(`/news/${newsId}/comment`, data);
             return response.data;
         } catch (error) {
             return thunkApi.rejectWithValue(error);
