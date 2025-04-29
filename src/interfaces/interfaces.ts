@@ -18,7 +18,16 @@ export interface INews extends Record<string, unknown> {
     _id: string,
     email: string,
     name: string
-  }
+  },
+  comments: INewsComment[]
+}
+
+export interface INewsComment extends Record<string, unknown> {
+  _id?: string,
+  commentText: string,
+  commentDate: string,
+  authorName: string,
+  authorId: string
 }
 
 export interface INewsState {
