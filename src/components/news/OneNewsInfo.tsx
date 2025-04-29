@@ -8,6 +8,8 @@ import { selectIsLoggedIn, selectUser } from "../../redux/auth/selectors";
 import { Button } from "../Button";
 import { toast } from "react-toastify";
 import errorNotify from "../../utils/errorNotify";
+import { AddCommentForm } from "./AddCommentForm";
+import { CommentsList } from "./CommentsList";
 
 export const OneNewsInfo = ({ newsItem }: { newsItem: INews }) => {
     const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -48,6 +50,8 @@ export const OneNewsInfo = ({ newsItem }: { newsItem: INews }) => {
             <p className="mb-2">✒️ Author: {newsItem.author?.name}</p>
             <p className="mb-2">🕒 Date: {newsItem.date && getDate(newsItem.date)}</p>
             <p dangerouslySetInnerHTML={{ __html: newsItem.content as string }} className="border min-h-80 p-2"></p>
+            <AddCommentForm />
+            <CommentsList comments={newsItem.comments} />
         </>
     )
 }
