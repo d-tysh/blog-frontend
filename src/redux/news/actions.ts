@@ -106,4 +106,16 @@ export const addComment = createAsyncThunk(
     }
 )
 
+export const deleteComment = createAsyncThunk(
+    'news/deleteComment',
+    async ({newsId, commentId}: {newsId: string, commentId: string}, thunkApi) => {
+        try {
+            const response = await axios.delete(`/news/${newsId}/comment/${commentId}`);
+            return response.data;
+        } catch (error) {
+            return thunkApi.rejectWithValue(error);
+        }
+    }
+)
+
 export const setCurrentNews = createAction<INews | null>('news/setCurrentNews');
