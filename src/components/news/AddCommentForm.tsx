@@ -4,19 +4,19 @@ import { Button } from "../Button";
 import { useSelector } from "react-redux";
 import { selectNewsItem } from "../../redux/news/selectors";
 import { selectIsLoggedIn, selectUser } from "../../redux/auth/selectors";
-import { INewsComment } from "../../interfaces/interfaces";
+import { INewsCommentForm } from "../../interfaces/interfaces";
 import { useAppDispatch } from "../../hooks";
 import { addComment, fetchNewsByURL } from "../../redux/news/actions";
 import { toast } from "react-toastify";
 
 export const AddCommentForm = () => {
-    const { register, handleSubmit, formState: { errors }, reset } = useForm<INewsComment>();
+    const { register, handleSubmit, formState: { errors }, reset } = useForm<INewsCommentForm>();
     const newsItem = useSelector(selectNewsItem);
     const currentUser = useSelector(selectUser);
     const isLoggedIn = useSelector(selectIsLoggedIn);
     const dispatch = useAppDispatch();
 
-    const onSubmit: SubmitHandler<INewsComment> = (data) => {
+    const onSubmit: SubmitHandler<INewsCommentForm> = (data) => {
         if (currentUser && currentUser.id) {
             const commentData = {
                 commentText: data.commentText,
