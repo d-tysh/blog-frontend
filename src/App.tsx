@@ -11,6 +11,7 @@ import { RestrictedRoute } from './components/RestrictedRoute';
 import { PrivateRoute } from './components/PrivateRoute';
 import { UserInfoPage } from './pages/UserInfoPage';
 import { AddUserPage } from './pages/AddUserPage';
+import { OnlineStatusManager } from './components/OnlineStatusManager';
 
 const HomePage = lazy(() => import('./pages/HomePage'));
 const NewsPage = lazy(() => import('./pages/NewsPage'));
@@ -31,6 +32,7 @@ function App() {
 
   return (
     <>
+      <OnlineStatusManager />
       <Routes>
         <Route path='/' element={<Layout />} >
           <Route index element={<HomePage />} />
