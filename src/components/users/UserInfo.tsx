@@ -26,6 +26,8 @@ export const UserInfo = () => {
 
     useGetUserInfo(userId, reset);
 
+    const deleteBtnDisabled = (currentUser?.role === 'admin') && (userInfo?.role === 'admin');
+
     return (
         <>
             { isLoading && !error && <Loader /> }
@@ -40,10 +42,12 @@ export const UserInfo = () => {
                             :
                             <InputField label='Role:' name='role' required readonly register={register} errors={errors} />
                     }
-                    <Button text="📝 Update" onClick={handleSubmit(onUpdateUser)} />
-                    <Button text="❌ Delete" type="button" onClick={() => onDeleteUser()}
-                        disabled={(currentUser?.role === 'admin') && (userInfo?.role === 'admin')}
-                    />
+                    <Button onClick={handleSubmit(onUpdateUser)}>
+                        📝 Update
+                    </Button>
+                    <Button type="button" onClick={() => onDeleteUser()} disabled={deleteBtnDisabled}>
+                        ❌ Delete
+                    </Button>
                 </form>
             }
             { !isLoading && error && <Error />}

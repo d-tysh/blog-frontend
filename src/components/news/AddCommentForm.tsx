@@ -44,7 +44,7 @@ export const AddCommentForm = () => {
                         <TextareaField label='Comment' name='commentText' required
                             register={register} errors={errors} height={100}
                         />
-                        <Button text='Send comment' />
+                        <Button>Send comment</Button>
                     </form>
                     : 
                     <p className="text-center text-xl italic">Login to leave a comment</p>

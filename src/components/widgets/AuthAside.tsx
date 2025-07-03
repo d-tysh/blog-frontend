@@ -31,7 +31,9 @@ export const AuthAside = () => {
                 !isLoading && isLoggedIn && user &&
                 <>
                     <NavLink to={`/users/${user.id}`}>👋 Hello, {user.name}!</NavLink>
-                    <Button text="🏁 Logout" width={120} isLoading={isLoading} onClick={handleLogout} />
+                    <Button width={120} isLoading={isLoading} onClick={handleLogout}>
+                        🏁 Logout
+                    </Button>
                 </>
             }
             {

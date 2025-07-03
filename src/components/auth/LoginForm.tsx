@@ -31,7 +31,7 @@ export const LoginForm = () => {
             <InputField label='Password' type='password' name='password' required 
                 register={register} errors={errors} minLength={6}
             />
-            <Button text='Login' isLoading={isLoading} />
+            <Button isLoading={isLoading}>Login</Button>
         </form>
     )
 }

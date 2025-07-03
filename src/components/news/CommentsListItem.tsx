@@ -43,7 +43,7 @@ export const CommentsListItem = ({ comment }: { comment: INewsComment }) => {
                 {
                     (currentUser?.id === comment.authorId || currentUser?.role === 'admin')
                     &&
-                    <Button text="❌" onClick={() => onDelete(comment._id)} />
+                    <Button onClick={() => onDelete(comment._id)}>❌</Button>
                 }
             </div>
         </li>

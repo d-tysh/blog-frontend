@@ -1,4 +1,4 @@
-import { SyntheticEvent } from "react"
+import { ButtonHTMLAttributes, SyntheticEvent } from "react"
 import { FieldErrors, FieldValues, Path, UseFormRegister } from "react-hook-form";
 
 export interface IState {
@@ -136,11 +136,7 @@ export interface IFormField<TFormValues extends FieldValues> {
   minLength?: number
 }
 
-export interface IButtonProps {
-  text: string,
+export interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   isLoading?: boolean,
-  type?: "submit" | "reset" | "button" | undefined,
-  onClick?: () => void,
-  disabled?: boolean,
   width?: number
 }

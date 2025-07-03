@@ -1,15 +1,10 @@
 import { Loader } from "./Loader";
 import { IButtonProps } from "../interfaces/interfaces";
 
-export const Button = (props: IButtonProps) => {
-    const { text, isLoading, type = "submit", onClick, disabled, width } = props;
-
+export const Button = ({ isLoading, width, children, ...restProps }: IButtonProps) => {
     return (
-        <button type={type} onClick={onClick} disabled={disabled}
-            className='h-12'
-            style={{ width }}
-        >
-            {isLoading ? <Loader size={24} /> : text}
+        <button className='h-12' style={{ width }} {...restProps}>
+            {isLoading ? <Loader size={24} /> : children}
         </button>
     )
 }

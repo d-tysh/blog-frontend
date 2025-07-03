@@ -39,7 +39,7 @@ export const RegisterForm = () => {
             <InputField label='Password' type='password' name='password' required
                 register={register} errors={errors} minLength={6}
             />
-            <Button text='Register' isLoading={isLoading} />
+            <Button isLoading={isLoading}>Register</Button>
         </form>
     )
 }

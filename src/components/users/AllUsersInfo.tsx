@@ -21,8 +21,12 @@ export const AllUsersInfo = () => {
     return (
         <>
             <div className="flex flex-col sm:flex-row sm:justify-between my-2 gap-2">
-                <Button text="➕ Add new user" onClick={() => navigate('/users/add')} />
-                <Button text="⟳ Refresh users list" onClick={() => dispatch(getAllUsers())} />
+                <Button onClick={() => navigate('/users/add')}>
+                    ➕ Add new user
+                </Button>
+                <Button onClick={() => dispatch(getAllUsers())}>
+                    ⟳ Refresh users list
+                </Button>
             </div>
             {isLoading && <Loader />}
             {

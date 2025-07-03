@@ -57,7 +57,7 @@ export const UpdateNewsForm = () => {
                 register={register} errors={errors} minLength={5}
             />
             <TextareaField label="Content" name="content" register={register} />
-            <Button text='📝 Update' isLoading={isLoading} />
+            <Button isLoading={isLoading}>📝 Update</Button>
         </form>
     )
 }

@@ -46,7 +46,7 @@ export const AddNewsForm = () => {
             <TextareaField label="Content" name="content" required 
                 register={register} errors={errors}
             />
-            <Button text='📑 Publish' isLoading={isLoading} />
+            <Button isLoading={isLoading}>📑 Publish</Button>
         </form>
     )
 }

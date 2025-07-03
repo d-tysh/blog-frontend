@@ -32,7 +32,9 @@ export const HeaderAuth = () => {
                 <div className="hidden lg:flex items-center gap-3">
                     { userStatus(user.isOnline) }
                     <NavLink to={`/users/${user.id}`}>👋 Hello, {user.name}!</NavLink>
-                    <Button text="🏁 Logout" width={120} isLoading={isLoading} onClick={handleLogout} />
+                    <Button width={120} isLoading={isLoading} onClick={handleLogout}>
+                        🏁 Logout
+                    </Button>
                 </div>
             }
             {
