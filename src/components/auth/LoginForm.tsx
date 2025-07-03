@@ -6,7 +6,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { ILoginForm } from "../../interfaces/interfaces";
 import { InputField } from "../forms/InputField";
 import { Button } from "../Button";
-import { emailPattern } from "../../constants";
+import { EMAIL_PATTERN } from "../../utils/constants";
 import { toast } from "react-toastify";
 
 export const LoginForm = () => {
@@ -26,7 +26,7 @@ export const LoginForm = () => {
     return (
         <form onSubmit={handleSubmit(onSubmit)} className="form w-full sm:w-[400px]">
             <InputField label='Email' name='email' required 
-                register={register} errors={errors} pattern={emailPattern}
+                register={register} errors={errors} pattern={EMAIL_PATTERN}
             />
             <InputField label='Password' type='password' name='password' required 
                 register={register} errors={errors} minLength={6}

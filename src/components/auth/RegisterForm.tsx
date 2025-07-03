@@ -6,7 +6,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { IRegisterForm } from "../../interfaces/interfaces";
 import { InputField } from "../forms/InputField";
 import { Button } from "../Button";
-import { emailPattern } from "../../constants";
+import { EMAIL_PATTERN } from "../../utils/constants";
 import { toast } from "react-toastify";
 
 export const RegisterForm = () => {
@@ -34,7 +34,7 @@ export const RegisterForm = () => {
                 register={register} errors={errors} minLength={2}
             />
             <InputField label='Email' name='email' required
-                register={register} errors={errors} pattern={emailPattern}
+                register={register} errors={errors} pattern={EMAIL_PATTERN}
             />
             <InputField label='Password' type='password' name='password' required
                 register={register} errors={errors} minLength={6}

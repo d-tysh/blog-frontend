@@ -11,7 +11,7 @@ import { Button } from "../Button";
 import { SelectField } from "../forms/SelectField";
 import { useUpdateUser } from "../hooks/useUpdateUser";
 import useGetUserInfo from "../hooks/useGetUserInfo";
-import { emailPattern } from "../../constants";
+import { EMAIL_PATTERN } from "../../utils/constants";
 import { Error } from "../Error";
 
 export const UserInfo = () => {
@@ -35,7 +35,7 @@ export const UserInfo = () => {
                 !isLoading && !error && userInfo &&
                 <form className="form w-full md:w-[400px]">
                     <InputField label='Name:' name='name' required register={register} errors={errors} minLength={2} />
-                    <InputField label='Email:' name='email' required register={register} errors={errors} pattern={emailPattern}/>
+                    <InputField label='Email:' name='email' required register={register} errors={errors} pattern={EMAIL_PATTERN}/>
                     {
                         currentUser?.role === 'admin' ?
                             <SelectField label="Role:" name="role" register={register} options={['admin', 'user']} />
