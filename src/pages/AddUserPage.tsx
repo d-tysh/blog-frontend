@@ -3,6 +3,7 @@ import { RegisterForm } from "../components/auth/RegisterForm"
 import { selectUser } from "../redux/auth/selectors"
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import { Helmet } from "react-helmet";
 
 export const AddUserPage = () => {
     const user = useSelector(selectUser);
@@ -16,6 +17,9 @@ export const AddUserPage = () => {
 
     return (
         <>
+            <Helmet>
+                <title>BLOG - Add new user</title>
+            </Helmet>
             <h2 className="text-center">Add new user</h2>
             <RegisterForm />
         </>
