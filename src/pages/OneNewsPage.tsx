@@ -7,6 +7,8 @@ import { useParams } from "react-router-dom";
 import { Loader } from "../components/Loader";
 import { OneNewsInfo } from "../components/news/OneNewsInfo";
 import PageNotFound from "./PageNotFound";
+import { Helmet } from "react-helmet";
+import { getMetaDescription } from "../utils/getMetaDescription";
 
 const OneNewsPage = () => {
     const newsItem = useSelector(selectNewsItem);
@@ -23,7 +25,18 @@ const OneNewsPage = () => {
     return (
         <>
             { isLoading && !error && <Loader size={40} /> }
-            { !isLoading && !error && newsItem && <OneNewsInfo newsItem={newsItem} /> }
+            { !isLoading && !error && newsItem && 
+                <>
+                    <Helmet>
+                        <title>{newsItem.title}</title>
+                        <meta 
+                            name="description"
+                            content={newsItem.content && getMetaDescription(newsItem.content, 157) + '...'} 
+                        />
+                    </Helmet>
+                    <OneNewsInfo newsItem={newsItem} />
+                </> 
+            }
             { !isLoading && error && !newsItem && <PageNotFound /> }
         </>
     )

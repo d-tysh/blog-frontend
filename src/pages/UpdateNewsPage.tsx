@@ -12,7 +12,7 @@ const UpdateNewsPage = () => {
     return (
         <div className='mx-auto w-full xl:w-[800px]'>
             <Helmet>
-                <title>Update post "{currentNews?.title}"</title>
+                <title>Edit post "{currentNews?.title}"</title>
             </Helmet>
             <h2 className="text-center">Update news: <i>{currentNews?.title}</i></h2>
             <div className="flex justify-center sm:justify-end mb-4">
