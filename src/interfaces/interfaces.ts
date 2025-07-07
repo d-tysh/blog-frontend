@@ -10,7 +10,7 @@ export interface IState {
 export interface INews extends Record<string, unknown> {
   _id?: string,
   title?: string,
-  date?: string,
+  date?: Date | string,
   content?: string,
   url?: string,
   createdAt?: Date,

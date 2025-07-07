@@ -1,3 +1,3 @@
-export const getDate = (date: string) => {
+export const getDate = (date: Date | string) => {
     return new Date(date).toDateString();
 }
